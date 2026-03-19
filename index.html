@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  font-family:Arial;
+  background:linear-gradient(-45deg,#667eea,#764ba2,#2193b0);
+  background-size:300% 300%;
+  animation:bg 8s infinite;
+}
+
+@keyframes bg{
+  0%{background-position:0%}
+  50%{background-position:100%}
+  100%{background-position:0%}
+}
+
+.box{
+  text-align:center;
+  background:rgba(0,0,0,0.3);
+  padding:40px;
+  border-radius:15px;
+}
+
+img{width:100px;margin-bottom:10px}
+
+button{
+  padding:10px 20px;
+  border:none;
+  border-radius:20px;
+  cursor:pointer;
+}
+
+button:hover{transform:scale(1.1)}
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+  <img src="logo.png">
+  <h1>Welcome</h1>
+  <p>Supermarket System 🛒</p>
+  <button onclick="go()">Start</button>
+</div>
+
+<script>
+function go(){
+  window.location.href="login.html";
+}
+</script>
+
+</body>
+</html>
