@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vegetables - KLM Freshmart</title>
+</head>
+<body>
+<h1>Available Vegetables 🥦</h1>
+<table border="1" cellspacing="0" cellpadding="5" align="center">
+<tr><th>Vegetable Name</th><th>Quantity (kg)</th><th>Price (₹)</th></tr>
+<script>
+const vegs=[{n:"Potato",p:25},{n:"Tomato",p:40},{n:"Onion",p:35},{n:"Carrot",p:60},{n:"Cabbage",p:30},{n:"Cauliflower",p:50},{n:"Spinach",p:20},{n:"Beetroot",p:55},{n:"Capsicum",p:80},{n:"Broccoli",p:120},{n:"Brinjal",p:45},{n:"Cucumber",p:25},{n:"Radish",p:20},{n:"Green Peas",p:70},{n:"Bottle Gourd",p:30},{n:"Bitter Gourd",p:50},{n:"Okra",p:60},{n:"Sweet Corn",p:90},{n:"Pumpkin",p:35},{n:"Mushroom",p:150},{n:"Fenugreek Leaves",p:25},{n:"Coriander Leaves",p:20},{n:"Lettuce",p:100},{n:"Drumstick",p:45},{n:"Yam",p:60}];
+vegs.forEach(v=>document.write(`<tr><td>${v.n}</td><td><input type="number" value="0.5" min="0.5" step="0.5"></td><td>${v.p}</td></tr>`));
+</script>
+</table>
+</body>
+</html>
