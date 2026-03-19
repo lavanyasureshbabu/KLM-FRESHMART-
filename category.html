@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>KLM Freshmart - Categories</title>
+    <style>
+        /* Body and background */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(to right, #f6d365, #fda085);
+        }
+
+        h1 {
+            color: #ff7e5f;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        /* Container for cards */
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        /* Individual category card */
+        .card {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        /* Images */
+        .card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 15px;
+            object-fit: cover;
+        }
+
+        /* Category name */
+        .card h3 {
+            margin-top: 10px;
+            color: #ff7e5f;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>KLM Freshmart 🛒</h1>
+<h2>Select a Category</h2>
+
+<div class="container">
+    <!-- Fruits Card -->
+    <a href="fruits.html">
+        <div class="card">
+            <img src="fruits.png" alt="Fruits">
+            <h3>Fruits</h3>
+        </div>
+    </a>
+
+    <!-- Vegetables Card -->
+    <a href="vegetables.html">
+        <div class="card">
+            <img src="vegetables.png" alt="Vegetables">
+            <h3>Vegetables</h3>
+        </div>
+    </a>
+
+    <!-- Dairy Card -->
+    <a href="dairy.html">
+        <div class="card">
+            <img src="dairy.png" alt="Dairy">
+            <h3>Dairy</h3>
+        </div>
+    </a>
+</div>
+
+</body>
+</html>
