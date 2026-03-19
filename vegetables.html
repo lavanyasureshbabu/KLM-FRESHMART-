@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vegetables - KLM Freshmart</title>
+  <style>
+    body{text-align:center;background:#f0fff0;font-family:Arial}
+    table{margin:auto;border-collapse:collapse}
+    th{background:#32cd32;color:white;padding:5px}
+    td{padding:5px;text-align:center}
+  </style>
+</head>
+<body>
+<h1>Vegetables 🥦</h1>
+<table border="1">
+<tr><th>Vegetable Name</th><th>Quantity (kg)</th><th>Price (₹)</th><th></th></tr>
+<script>
+let cart=[],v=[
+  {n:"Potato",p:25},{n:"Tomato",p:40},{n:"Onion",p:35},{n:"Carrot",p:60},{n:"Cabbage",p:30},
+  {n:"Cauliflower",p:50},{n:"Spinach",p:20},{n:"Beetroot",p:55},{n:"Capsicum",p:80},{n:"Broccoli",p:120},
+  {n:"Brinjal",p:45},{n:"Cucumber",p:25},{n:"Radish",p:20},{n:"Green Peas",p:70},{n:"Bottle Gourd",p:30},
+  {n:"Bitter Gourd",p:50},{n:"Okra",p:60},{n:"Sweet Corn",p:90},{n:"Pumpkin",p:35},{n:"Mushroom",p:150},
+  {n:"Fenugreek Leaves",p:25},{n:"Coriander Leaves",p:20},{n:"Lettuce",p:100},{n:"Drumstick",p:45},{n:"Yam",p:60}
+];
+v.forEach(x=>{
+  document.write(`<tr>
+    <td>${x.n}</td>
+    <td><input type="number" value="0.5" min="0.5" step="0.5" onchange="this.nextElementSibling.innerText=this.value*${x.p}"></td>
+    <td>${x.p}</td>
+    <td><button onclick="cart.push({n:'${x.n}',q:this.previousElementSibling.value,p:this.previousElementSibling.value*${x.p}});showCart()">Add</button></td>
+  </tr>`);
+});
+function showCart(){
+  let t='<h2>Cart</h2><table border="1" align="center"><tr><th>Item</th><th>Qty</th><th>Price</th></tr>';
+  cart.forEach(i=>t+=`<tr><td>${i.n}</td><td>${i.q}</td><td>${i.p}</td></tr>`);
+  t+='</table>';
+  document.getElementById('c').innerHTML=t;
+}
+</script>
+</table>
+<div id="c"></div>
+</body>
+</html>
