@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dairy Products - KLM Freshmart</title>
+  <style>
+    body{text-align:center;background:#fffacd;font-family:Arial}
+    table{margin:auto;border-collapse:collapse}
+    th{background:#ffeb3b;color:black;padding:5px}
+    td{padding:5px;text-align:center}
+  </style>
+</head>
+<body>
+<h1>Dairy Products 🥛</h1>
+<table border="1">
+<tr><th>Dairy Name</th><th>Quantity (kg/l)</th><th>Price (₹)</th><th></th></tr>
+<script>
+let cart=[],d=[
+  {n:"Milk",p:50},{n:"Curd",p:40},{n:"Cheese",p:150},{n:"Butter",p:120},{n:"Paneer",p:200},
+  {n:"Ghee",p:250},{n:"Cream",p:180},{n:"Yogurt",p:60},{n:"Condensed Milk",p:100},{n:"Flavored Milk",p:90},
+  {n:"Lassi",p:80},{n:"Chocolate Milk",p:100},{n:"Cheese Slices",p:110},{n:"Skimmed Milk",p:55},{n:"Makhana Milk",p:120}
+];
+d.forEach(x=>{
+  document.write(`<tr>
+    <td>${x.n}</td>
+    <td><input type="number" value="0.5" min="0.5" step="0.5" onchange="this.nextElementSibling.innerText=this.value*${x.p}"></td>
+    <td>${x.p}</td>
+    <td><button onclick="cart.push({n:'${x.n}',q:this.previousElementSibling.value,p:this.previousElementSibling.value*${x.p}});showCart()">Add</button></td>
+  </tr>`);
+});
+function showCart(){
+  let t='<h2>Cart</h2><table border="1" align="center"><tr><th>Item</th><th>Qty</th><th>Price</th></tr>';
+  cart.forEach(i=>t+=`<tr><td>${i.n}</td><td>${i.q}</td><td>${i.p}</td></tr>`);
+  t+='</table>';
+  document.getElementById('c').innerHTML=t;
+}
+</script>
+</table>
+<div id="c"></div>
+</body>
+</html>
