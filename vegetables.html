@@ -17,7 +17,15 @@ let td3=document.createElement('td');td3.innerText=x.p*inp.value;tr.appendChild(
 inp.oninput=()=>td3.innerText=x.p*inp.value;
 let td4=document.createElement('td');let btn=document.createElement('button');btn.innerText='Add';btn.onclick=()=>{c.push({name:x.n,qty:inp.value,price:x.p*inp.value});upd();};td4.appendChild(btn);tr.appendChild(td4);
 t.appendChild(tr);});
-function upd(){let h='<table border="1" style="margin:auto"><tr><th>Item</th><th>Qty</th><th>Price</th></tr>';c.forEach(i=>h+=`<tr><td>${i.name}</td><td>${i.qty}</td><td>${i.price}</td></tr>`);h+='</table>';document.getElementById('c').innerHTML=h;}
+  function upd(){
+ let total=0;
+ let h='<table border="1" style="margin:auto"><tr><th>Item</th><th>Qty</th><th>Price</th></tr>';
+ c.forEach(i=>{h+=`<tr><td>${i.name}</td><td>${i.qty}</td><td>${i.price}</td></tr>`; total+=+i.price;});
+ h+=`</table><h3>Total: ₹${total}</h3>
+ <button onclick="goPay(${total})">Proceed to Payment</button>`;
+ document.getElementById('c').innerHTML=h;
+}
+function goPay(t){localStorage.setItem("total",t);window.location="payment.html";}
 </script>
 </body>
 </html>
