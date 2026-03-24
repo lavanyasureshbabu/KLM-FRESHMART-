@@ -7,37 +7,76 @@ body{text-align:center;font-family:Arial;background:#fff0f5}
 table{margin:auto;border-collapse:collapse}
 th{background:#ff7e5f;color:white;padding:5px}
 td{padding:5px;text-align:center}
-input[type=number]{width:50px}
+input{width:50px}
 </style>
 </head>
 <body>
+
 <h1>Fruits 🍎</h1>
+
 <table border="1">
-<tr><th>Fruit</th><th>Qty (kg)</th><th>Price (₹)</th><th></th></tr>
+<tr><th>Fruit</th><th>Qty</th><th>Price</th><th></th></tr>
 <tbody id="t"></tbody>
 </table>
+
 <h2>Cart</h2>
 <div id="c"></div>
+
 <script>
-let cart=[],f=[{n:"Apple",p:60},{n:"Banana",p:30},{n:"Orange",p:50},{n:"Mango",p:120},{n:"Pineapple",p:80},{n:"Grapes",p:90},{n:"Papaya",p:70},{n:"Strawberry",p:150},{n:"Blueberry",p:200},{n:"Watermelon",p:40},{n:"Kiwi",p:130},{n:"Guava",p:60},{n:"Litchi",p:140},{n:"Cherry",p:220},{n:"Pear",p:100},{n:"Peach",p:120},{n:"Plum",p:90},{n:"Pomegranate",p:100},{n:"Fig",p:200},{n:"Apricot",p:180},{n:"Cantaloupe",p:80},{n:"Raspberry",p:220},{n:"Blackberry",p:200},{n:"Tangerine",p:70},{n:"Dragonfruit",p:250}];
-let t=document.getElementById('t');
+let c=[];
+
+let f=[
+["Apple",60],["Banana",30],["Orange",50],["Mango",120],["Pineapple",80],
+["Grapes",90],["Papaya",70],["Strawberry",150],["Blueberry",200],["Watermelon",40],
+["Kiwi",130],["Guava",60],["Litchi",140],["Cherry",220],["Pear",100],
+["Peach",120],["Plum",90],["Pomegranate",100],["Fig",200],["Apricot",180],
+["Cantaloupe",80],["Raspberry",220],["Blackberry",200],["Tangerine",70],["Dragonfruit",250]
+];
+
+let t=document.getElementById("t");
+
 f.forEach(x=>{
-let tr=document.createElement('tr');
-let td1=document.createElement('td'); td1.innerText=x.n; tr.appendChild(td1);
-let td2=document.createElement('td'); let inp=document.createElement('input'); inp.type='number'; inp.value=0.5; inp.min=0.5; inp.step=0.5; td2.appendChild(inp); tr.appendChild(td2);
-let td3=document.createElement('td'); td3.innerText=x.p*inp.value; tr.appendChild(td3);
-inp.oninput=()=>td3.innerText=x.p*inp.value;
-let td4=document.createElement('td'); let btn=document.createElement('button'); btn.innerText='Add'; btn.onclick=()=>{cart.push({name:x.n,qty:inp.value,price:x.p*inp.value});updateCart();}; td4.appendChild(btn); tr.appendChild(td4);
+let tr=document.createElement("tr");
+
+tr.innerHTML=
+`<td>${x[0]}</td>
+<td><input type="number" value="0.5" min="0.5" step="0.5"></td>
+<td>${x[1]*0.5}</td>
+<td><button>Add</button></td>`;
+
+let inp=tr.children[1].children[0];
+let priceCell=tr.children[2];
+
+inp.oninput=()=>priceCell.innerText=x[1]*inp.value;
+
+tr.children[3].children[0].onclick=()=>{
+c.push({name:x[0],qty:inp.value,price:x[1]*inp.value});
+upd();
+};
+
 t.appendChild(tr);
-});  function upd(){
- let total=0;
- let h='<table border="1" style="margin:auto"><tr><th>Item</th><th>Qty</th><th>Price</th></tr>';
- c.forEach(i=>{h+=`<tr><td>${i.name}</td><td>${i.qty}</td><td>${i.price}</td></tr>`; total+=+i.price;});
- h+=`</table><h3>Total: ₹${total}</h3>
- <button onclick="goPay(${total})">Proceed to Payment</button>`;
- document.getElementById('c').innerHTML=h;
+});
+
+function upd(){
+let total=0;
+let h='<table border="1" style="margin:auto"><tr><th>Item</th><th>Qty</th><th>Price</th></tr>';
+
+c.forEach(i=>{
+h+=`<tr><td>${i.name}</td><td>${i.qty}</td><td>${i.price}</td></tr>`;
+total+=+i.price;
+});
+
+h+=`</table><h3>Total: ₹${total}</h3>
+<button onclick="goPay(${total})">Proceed to Payment</button>`;
+
+document.getElementById("c").innerHTML=h;
 }
-function goPay(t){localStorage.setItem("total",t);window.location="payment.html";}
+
+function goPay(t){
+localStorage.setItem("total",t);
+window.location="payment.html";
+}
 </script>
+
 </body>
 </html>
